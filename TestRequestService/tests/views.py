@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from TestRequestService.tests.serializers import QuestionSerializer
 
-# Create your views here.
+class TestRunner(viewsets.ModelViewSet):
+    """
+    API endpoint that runs solutions against test cases.
+    """
+    pass

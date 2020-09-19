@@ -3,7 +3,7 @@
 ## Making a test request
 
 
-- URL: test/<test_name>
+- URL: test/<question_name>
 - POST Request
     - solution: *str*
 - Response
