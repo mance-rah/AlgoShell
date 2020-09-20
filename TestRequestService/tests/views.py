@@ -1,8 +1,21 @@
+from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from TestRequestService.tests.serializers import QuestionSerializer
+from rest_framework import permissions
+from TestRequestService.tests.serializers import UserSerializer, GroupSerializer
 
-class TestRunner(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that runs solutions against test cases.
+    API endpoint that allows uers to be viewed or edited.
     """
-    pass
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
