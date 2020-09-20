@@ -122,3 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Django REST Framework
+INSTALLED_APPS = [
+    'rest_framework'
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINIATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
