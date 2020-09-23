@@ -1,0 +1,25 @@
+@startuml
+class Question {
+    description: str
+    category: fk
+    difficulty: fk
+}
+
+class Category {
+    name: str
+}
+
+class Difficulty {
+    name: str
+}
+
+class Test {
+    question: fk
+    inputs: list
+    expected: str
+}
+
+Test --|> Question
+Question --|> Category
+Question --|> Difficulty
+@enduml
