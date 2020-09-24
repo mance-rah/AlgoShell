@@ -1,9 +1,6 @@
 from django.db import models
 
 class Test(models.Model):
-    """
-    Needs inputs and expected fields
-    """
     inputs = models.JSONField()
     expected = models.JSONField()
     question = models.ForeignKey(
