@@ -1,20 +1,20 @@
 @startuml
 class Question {
-    name: str
-    description: str
+    name: CharField
+    description: TextField
 }
 
 class Category {
-    name: str
+    name: CharField
 }
 
 class Difficulty {
-    name: str
+    name: CharField
 }
 
 class Test {
-    input: json
-    expected: json
+    input: JSONField
+    expected: JSONField
 }
 
 Test --|> Question: fk

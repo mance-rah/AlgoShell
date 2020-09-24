@@ -4,12 +4,15 @@ class Test(models.Model):
     """
     Needs inputs and expected fields
     """
+    inputs = models.JSONField()
+    expected = models.JSONField()
     question = models.ForeignKey(
         Question,
         on_delete=models.CASCADE
     )
 
 class Question(models.Model):
+    name = models.CharField(max_length=50)
     description = models.TextField()
     category = models.ForeignKey(
         Category,
