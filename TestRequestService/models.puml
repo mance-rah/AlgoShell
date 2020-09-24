@@ -1,8 +1,7 @@
 @startuml
 class Question {
+    name: str
     description: str
-    category: fk
-    difficulty: fk
 }
 
 class Category {
@@ -14,12 +13,11 @@ class Difficulty {
 }
 
 class Test {
-    question: fk
-    inputs: list
-    expected: str
+    input: json
+    expected: json
 }
 
-Test --|> Question
-Question --|> Category
-Question --|> Difficulty
+Test --|> Question: fk
+Question --|> Category: fk
+Question --|> Difficulty: fk
 @enduml
