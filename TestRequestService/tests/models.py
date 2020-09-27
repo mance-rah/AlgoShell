@@ -23,17 +23,7 @@ class Question(models.Model):
         Difficulty,
         on_delete=models.CASCADE
     )
+    tests = models.JSONField()
 
     def __str__(self):
         return self.name
-
-class Test(models.Model):
-    inputs = models.JSONField()
-    expected = models.JSONField()
-    question = models.ForeignKey(
-        Question,
-        on_delete=models.CASCADE
-    )
-
-    def __str__(self):
-        return 'Question: {}, Inputs: {}, Expected: {}'.format(question.name, inputs, expected)
