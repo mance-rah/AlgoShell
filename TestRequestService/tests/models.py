@@ -1,12 +1,16 @@
 from django.db import models
 
-class Test(models.Model):
-    inputs = models.JSONField()
-    expected = models.JSONField()
-    question = models.ForeignKey(
-        Question,
-        on_delete=models.CASCADE
-    )
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class Difficulty(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
 
 class Question(models.Model):
     name = models.CharField(max_length=50)
@@ -20,8 +24,16 @@ class Question(models.Model):
         on_delete=models.CASCADE
     )
 
-class Category(models.Model):
-    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
 
-class Difficulty(model.Model):
-    name = models.CharField(max_length=50)
+class Test(models.Model):
+    inputs = models.JSONField()
+    expected = models.JSONField()
+    question = models.ForeignKey(
+        Question,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return 'Question: {}, Inputs: {}, Expected: {}'.format(question.name, inputs, expected)
