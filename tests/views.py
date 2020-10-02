@@ -19,23 +19,30 @@ def run_test(request, function_name):
     # Get solution as a string from request
     solution = request.data['solution']
 
-    return JsonResponse({"passed": is_valid_solution(solution, suite, function_name)})
-
-# ================
-# Helper functions
-# ================
-
-def is_valid_solution(solution, suite, function_name):
     # Define solution str as python function
     exec(solution)
 
     # Run test suite on function
+    response_body = {'passed': True, 'results': []}
+
     for case in suite:
         exec('result = {}("{}")'.format(function_name, case['inputs']['string']))
         if locals()['result'] != case['output']:
-            return False
+            response_body['passed'] = False
+        
+        response_body['results'].append(
+            {
+                'inputs': case['inputs'],
+                'expected': case['output'],
+                'actual': locals()['result'],
+            }
+        )
 
-    return True
+    return JsonResponse(response_body)
+
+# ================
+# Helper functions
+# ================
 
 
 SUITES_JSON_FILENAME = 'tests/suites.json'
