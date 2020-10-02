@@ -13,7 +13,26 @@ class IsPalindromeTests(APITestCase):
             'solution': 'def is_palindrome(string):\n    for i in range(len(string)):\n        if string[i] != string[len(string) - 1 - i]:\n            return False\n    return True'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
-        expected_response_body = {'passed': True}
+        expected_response_body = {
+            'passed': True,
+            'results': [
+                {
+                    'inputs': {'string': 'abcdcba'},
+                    'expected': True,
+                    'actual': True
+                },
+                {
+                    'inputs': {'string': 'a'},
+                    'expected': True,
+                    'actual': True
+                },
+                {
+                    'inputs': {'string': 'ab'},
+                    'expected': False,
+                    'actual': False
+                }
+            ]
+        }
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
@@ -28,7 +47,26 @@ class IsPalindromeTests(APITestCase):
             'solution': 'def is_palindrome(string):\n    return False'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
-        expected_response_body = {'passed': False}
+        expected_response_body = {
+            'passed': False,
+            'results': [
+                {
+                    'inputs': {'string': 'abcdcba'},
+                    'expected': True,
+                    'actual': False
+                },
+                {
+                    'inputs': {'string': 'a'},
+                    'expected': True,
+                    'actual': False
+                },
+                {
+                    'inputs': {'string': 'ab'},
+                    'expected': False,
+                    'actual': False
+                }
+            ]
+        }
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
@@ -43,7 +81,26 @@ class IsPalindromeTests(APITestCase):
             'solution': 'def is_palindrome(string):\n    return True'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
-        expected_response_body = {'passed': False}
+        expected_response_body = {
+            'passed': False,
+            'results': [
+                {
+                    'inputs': {'string': 'abcdcba'},
+                    'expected': True,
+                    'actual': True
+                },
+                {
+                    'inputs': {'string': 'a'},
+                    'expected': True,
+                    'actual': True
+                },
+                {
+                    'inputs': {'string': 'ab'},
+                    'expected': False,
+                    'actual': True
+                }
+            ]
+        }
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
