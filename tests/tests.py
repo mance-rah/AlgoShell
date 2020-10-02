@@ -3,18 +3,53 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 import json
 
-class RunTestTests(APITestCase):
-    def test_hello_world(self):
+class IsPalindromeTests(APITestCase):
+
+    def test_correct_solution_passes(self):
         """
-        Ensure hello world message is returned.
+        Ensure correct solution passes test cases.
         """
-        request_body = {'solution': 'Insert solution here'} 
-        url = reverse('run_test', kwargs={'function_name':'Insert function name here'})
-        expected_response_body = {'function_name': 'Insert function name here', 'solution': 'Insert solution here'}
+        request_body = {
+            'solution': 'def isPalindrome(string):\n    for i in range(len(string)):\n        if string[i] != string[len(string) - 1 - i]:\n            return False\n    return True'
+        }
+        url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
+        expected_response_body = {'passed': True}
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
 
         self.assertEqual(expected_response_body, actual_response_body)
+
+    def test_false_function_fails(self):
+        """
+        Ensure function that always returns False failes test cases.
+        """
+        request_body = {
+            'solution': 'def isPalindrome(string):\n    return False'
+        }
+        url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
+        expected_response_body = json.loads(response.content)
+
+        response = self.client.post(url, request_body, format='json')
+        actual_response_body = json.loads(response.content)
+
+        self.assertEqual(expected_response_body, actual_response_body)
+
+    def test_true_function_fails(self):
+        """
+        Ensure function that always returns True failes test cases.
+        """
+        request_body = {
+            'solution': 'def isPalindrome(string):\n    return True'
+        }
+        url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
+        expected_response_body = json.loads(response.content)
+
+        response = self.client.post(url, request_body, format='json')
+        actual_response_body = json.loads(response.content)
+
+        self.assertEqual(expected_response_body, actual_response_body)
+
+
         
 

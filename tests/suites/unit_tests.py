@@ -14,5 +14,3 @@ class TestReadSuitesList(unittest.TestCase):
 
         self.assertEqual(expected_suites_list, actual_suites_list)
 
-if __name__ == '__main__':
-    unittest.main()
