@@ -19,17 +19,20 @@ class IsPalindromeTests(APITestCase):
                 {
                     'inputs': {'string': 'abcdcba'},
                     'expected': True,
-                    'actual': True
+                    'actual': True,
+                    'passed': True
                 },
                 {
                     'inputs': {'string': 'a'},
                     'expected': True,
-                    'actual': True
+                    'actual': True,
+                    'passed': True
                 },
                 {
                     'inputs': {'string': 'ab'},
                     'expected': False,
-                    'actual': False
+                    'actual': False,
+                    'passed': True
                 }
             ]
         }
@@ -53,17 +56,20 @@ class IsPalindromeTests(APITestCase):
                 {
                     'inputs': {'string': 'abcdcba'},
                     'expected': True,
-                    'actual': False
+                    'actual': False,
+                    'passed': False
                 },
                 {
                     'inputs': {'string': 'a'},
                     'expected': True,
-                    'actual': False
+                    'actual': False,
+                    'passed': False
                 },
                 {
                     'inputs': {'string': 'ab'},
                     'expected': False,
-                    'actual': False
+                    'actual': False,
+                    'passed': True
                 }
             ]
         }
@@ -87,17 +93,20 @@ class IsPalindromeTests(APITestCase):
                 {
                     'inputs': {'string': 'abcdcba'},
                     'expected': True,
-                    'actual': True
+                    'actual': True,
+                    'passed': True
                 },
                 {
                     'inputs': {'string': 'a'},
                     'expected': True,
-                    'actual': True
+                    'actual': True,
+                    'passed': True
                 },
                 {
                     'inputs': {'string': 'ab'},
                     'expected': False,
-                    'actual': True
+                    'actual': True,
+                    'passed': False
                 }
             ]
         }

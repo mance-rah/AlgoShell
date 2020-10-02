@@ -35,6 +35,7 @@ def run_test(request, function_name):
                 'inputs': case['inputs'],
                 'expected': case['output'],
                 'actual': locals()['result'],
+                'passed': locals()['result'] == case['output']
             }
         )
 
