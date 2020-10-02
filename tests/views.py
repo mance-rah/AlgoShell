@@ -4,7 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework.decorators import parser_classes, api_view
 from .serializers import UserSerializer, GroupSerializer
+import json
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -22,7 +24,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
     
-@csrf_exempt
+@api_view(['POST'])
+@parser_classes([JSONParser])
 def run_test(request, function_name):
     """
     Echos the information that was sent to the endpoints in the response.
@@ -32,5 +35,6 @@ def run_test(request, function_name):
     Endpoint URL: tests/<question_name>
     Response Body: {question_name:str, solution:str}
     """
-    return JsonResponse({"message": "Hello, World!"})
+    solution = request.data['solution']
+    return JsonResponse({"function_name": function_name, 'solution': solution})
 

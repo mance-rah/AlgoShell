@@ -9,7 +9,7 @@ class RunTestTests(APITestCase):
         Ensure hello world message is returned.
         """
         request_body = {'solution': 'Insert solution here'} 
-        url = reverse('run_test', kwargs={'function_name':'is_palindrome'})
+        url = reverse('run_test', kwargs={'function_name':'Insert function name here'})
         expected_response_body = {'function_name': 'Insert function name here', 'solution': 'Insert solution here'}
 
         response = self.client.post(url, request_body, format='json')
