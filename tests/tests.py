@@ -10,7 +10,7 @@ class IsPalindromeTests(APITestCase):
         Ensure correct solution passes test cases.
         """
         request_body = {
-            'solution': 'def isPalindrome(string):\n    for i in range(len(string)):\n        if string[i] != string[len(string) - 1 - i]:\n            return False\n    return True'
+            'solution': 'def is_palindrome(string):\n    for i in range(len(string)):\n        if string[i] != string[len(string) - 1 - i]:\n            return False\n    return True'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
         expected_response_body = {'passed': True}
@@ -25,10 +25,10 @@ class IsPalindromeTests(APITestCase):
         Ensure function that always returns False failes test cases.
         """
         request_body = {
-            'solution': 'def isPalindrome(string):\n    return False'
+            'solution': 'def is_palindrome(string):\n    return False'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
-        expected_response_body = json.loads(response.content)
+        expected_response_body = {'passed': False}
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
@@ -40,10 +40,10 @@ class IsPalindromeTests(APITestCase):
         Ensure function that always returns True failes test cases.
         """
         request_body = {
-            'solution': 'def isPalindrome(string):\n    return True'
+            'solution': 'def is_palindrome(string):\n    return True'
         }
         url = reverse('run_test', kwargs={'function_name': 'is_palindrome'})
-        expected_response_body = json.loads(response.content)
+        expected_response_body = {'passed': False}
 
         response = self.client.post(url, request_body, format='json')
         actual_response_body = json.loads(response.content)
