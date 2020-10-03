@@ -1,6 +1,7 @@
 from rest_framework.decorators import parser_classes, api_view
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
+from .helpers import get_suite
 import json
     
 @api_view(['POST'])
@@ -40,34 +41,3 @@ def run_test(request, function_name):
         )
 
     return JsonResponse(response_body)
-
-# ================
-# Helper functions
-# ================
-
-
-SUITES_JSON_FILENAME = 'tests/suites.json'
-
-def get_suite(function_name):
-    """
-    Reads suites dictionary from adjacent JSON file.
-
-    Parameters:
-        - function_name (str): Name of function being tested
-
-    Returns: List of JSON objects with inputs and output as keys
-    """
-
-    suites_dict = read_suites()
-    return suites_dict[function_name]
-
-def read_suites():
-    """
-    Reads adjacent JSON file.
-
-    Returns: JSON data (dict)
-    """
-
-    with open(SUITES_JSON_FILENAME) as file:
-        suites_dict = json.load(file)
-    return suites_dict
