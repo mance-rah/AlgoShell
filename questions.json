@@ -1,0 +1,14 @@
+{
+    "Is Palindrome": {
+        "description": "Write a function that takes in a string and returns True if it is a palindrome and False otherwise.\n\nA palindrome is a string that is read the same way forward as backwards.",
+        "function_name": "is_palindrome",
+        "parameters": ["string"],
+        "category": "Strings",
+        "difficulty": "Easy",
+        "tests": [
+            {"input": ["abcdcba"], "output": true},
+            {"input": ["a"], "output": true},
+            {"input": ["ab"], "output": false}
+          ]
+    }
+}
