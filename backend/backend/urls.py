@@ -2,9 +2,9 @@ from django.urls import include, path
 from django.contrib import admin
 
 from rest_framework import routers
-from tests import views
+from questions import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('tests.urls')),
+    path('', include('questions.urls')),
 ]

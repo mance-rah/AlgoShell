@@ -7,14 +7,6 @@ import json
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def run_test(request, function_name):
-    """
-    Echos the information that was sent to the endpoints in the response.
-    Will later be used for running tests contained in solution from request.
-
-    Request body: {solution:str}
-    Endpoint URL: tests/<question_name>
-    Response Body: {question_name:str, solution:str}
-    """
     suite = get_suite(function_name)
 
     # Get solution as a string from request

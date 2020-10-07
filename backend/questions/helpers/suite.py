@@ -1,6 +1,6 @@
 import json
 
-SUITES_JSON_FILENAME = 'tests/suites.json'
+SUITES_JSON_FILENAME = 'questions/suites.json'
 
 def get_suite(function_name):
     """
