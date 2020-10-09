@@ -14,6 +14,7 @@ class Difficulty(models.Model):
 
 class Question(models.Model):
     name = models.CharField(max_length=50)
+    signature=models.CharField(max_length=50)
     description = models.TextField()
     category = models.ForeignKey(
         Category,

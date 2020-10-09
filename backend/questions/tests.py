@@ -123,8 +123,9 @@ class GetQuestionsTests(APITestCase):
         easy_difficulty = Difficulty.objects.create(name="Easy")
         strings_category = Category.objects.create(name="Strings")
         is_palindrome_question = Question.objects.create(
-            name="Is Palindrome",
-            description="Write a function that determines if a string is a palindrome.",
+            name='Is Palindrome',
+            signature='is_palindrome(string)',
+            description='Write a function that determines if a string is a palindrome.',
             category=strings_category,
             difficulty=easy_difficulty,
         )
@@ -139,13 +140,13 @@ class GetQuestionsTests(APITestCase):
                 'title': 'Is Palindrome',
                 'description': 'Write a function that determines if a string is a palindrome.',
                 'function_name': 'is_palindrome',
-                'parameters': ['string'],
+                'function_signature': 'is_palindrome(string)',
                 'category': 'Strings',
                 'difficulty': 'Easy',
                 'tests': [
-                    {'input': ['abcdcba'], 'output': True},
-                    {'input': ['a'], 'output': True},
-                    {'input': ['ab'], 'output': False}
+                    {'inputs': {"string": "abcdcba"}, 'output': True},
+                    {'inputs': {"string": "a"}, 'output': True},
+                    {'inputs': {"string": "ab"}, 'output': False}
                 ]
             }
         ]
