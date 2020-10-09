@@ -150,7 +150,7 @@ class GetQuestionsTests(APITestCase):
 
 from .helpers import save_suites
 
-class TestSyncDatabaseWithSuitesConfig(TestCase):
+class TestSyncDatabaseWithSuitesConfig(APITestCase):
 
     def setUp(self):
         create_test_questions()
@@ -160,11 +160,13 @@ class TestSyncDatabaseWithSuitesConfig(TestCase):
         Tests the ability of the test_suites helper function to save tests in correct Question
         """
 
-        suites = [
-            {"inputs": {"string": "abcdcba"}, "output": True},
-            {"inputs": {"string": "a"}, "output": True},
-            {"inputs": {"string": "ab"}, "output": True}
-        ]
+        suites = {
+            "is_palindrome": [
+                {"inputs": {"string": "abcdcba"}, "output": True},
+                {"inputs": {"string": "a"}, "output": True},
+                {"inputs": {"string": "ab"}, "output": False}
+            ]
+        }
 
         save_suites(suites)
 
