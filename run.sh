@@ -5,3 +5,5 @@ docker-compose run web python createsuperuser.py
 
 cd ../frontend
 docker-compose up -d --build
+
+echo "Startup successful... AlgoShell is online."
