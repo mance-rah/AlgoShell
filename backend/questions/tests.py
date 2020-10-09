@@ -120,15 +120,7 @@ class IsPalindromeTests(APITestCase):
 class GetQuestionsTests(APITestCase):
     
     def setUp(self):
-        easy_difficulty = Difficulty.objects.create(name="Easy")
-        strings_category = Category.objects.create(name="Strings")
-        is_palindrome_question = Question.objects.create(
-            name='Is Palindrome',
-            signature='is_palindrome(string)',
-            description='Write a function that determines if a string is a palindrome.',
-            category=strings_category,
-            difficulty=easy_difficulty,
-        )
+        create_test_questions()
 
     def test_is_palindrome_exists(self):
         """
@@ -155,6 +147,42 @@ class GetQuestionsTests(APITestCase):
         actual_response_body = json.loads(response.content)
 
         self.assertEqual(expected_response_body, actual_response_body)
+
+from .helpers import save_suites
+
+class TestSyncDatabaseWithSuitesConfig(TestCase):
+
+    def setUp(self):
+        create_test_questions()
+
+    def test_helper_function(self):
+        """
+        Tests the ability of the test_suites helper function to save tests in correct Question
+        """
+
+        suites = [
+            {"inputs": {"string": "abcdcba"}, "output": True},
+            {"inputs": {"string": "a"}, "output": True},
+            {"inputs": {"string": "ab"}, "output": True}
+        ]
+
+        save_suites(suites)
+
+        is_palindrome_question = Question.objects.get(name='Is Palindrome')
+        
+        self.assertEqual(is_palindrome_question.tests, suites)
+
+def create_test_questions():
+    easy_difficulty = Difficulty.objects.create(name="Easy")
+    strings_category = Category.objects.create(name="Strings")
+    is_palindrome_question = Question.objects.create(
+        name='Is Palindrome',
+        signature='is_palindrome(string)',
+        description='Write a function that determines if a string is a palindrome.',
+        category=strings_category,
+        difficulty=easy_difficulty,
+    )
+
 
 
         
