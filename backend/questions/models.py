@@ -24,6 +24,7 @@ class Question(models.Model):
         Difficulty,
         on_delete=models.CASCADE
     )
+    tests = models.JSONField()
 
     def __str__(self):
         return self.name

@@ -183,6 +183,7 @@ def create_test_questions():
         description='Write a function that determines if a string is a palindrome.',
         category=strings_category,
         difficulty=easy_difficulty,
+        tests = []
     )
 
 

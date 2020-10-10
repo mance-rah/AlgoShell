@@ -28,7 +28,7 @@ def get_suite(function_name):
     """
 
     suites_dict = read_suites()
-    return suite_dict[function_name]
+    return suites_dict[function_name]
 
 def read_suites():
     """

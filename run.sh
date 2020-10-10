@@ -1,6 +1,4 @@
 ./backend.sh
 
-cd ../frontend
+cd frontend
 docker-compose up -d --build
-
-echo "Startup successful... AlgoShell is online."
