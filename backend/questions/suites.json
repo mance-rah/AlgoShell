@@ -1,7 +1,0 @@
-{
-	"is_palindrome": [
-	  {"inputs": {"string": "abcdcba"}, "output": true},
-	  {"inputs": {"string": "a"}, "output": true},
-	  {"inputs": {"string": "ab"}, "output": false}
-	]
-}
