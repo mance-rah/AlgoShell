@@ -14,7 +14,6 @@ class Difficulty(models.Model):
 
 class Question(models.Model):
     name = models.CharField(max_length=50)
-    signature=models.CharField(max_length=50)
     description = models.TextField()
     category = models.ForeignKey(
         Category,
@@ -24,7 +23,9 @@ class Question(models.Model):
         Difficulty,
         on_delete=models.CASCADE
     )
-    tests = models.JSONField()
+    function_name = models.CharField(max_length=50)
+    parameters = models.JSONField()
+    test_cases = models.JSONField()
 
     def __str__(self):
         return self.name
