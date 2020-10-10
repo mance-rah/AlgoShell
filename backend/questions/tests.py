@@ -172,7 +172,7 @@ class TestSyncDatabaseWithSuitesConfig(APITestCase):
 
         is_palindrome_question = Question.objects.get(name='Is Palindrome')
         
-        self.assertEqual(is_palindrome_question.tests, suites)
+        self.assertEqual(is_palindrome_question.tests, suites['is_palindrome'])
 
 def create_test_questions():
     easy_difficulty = Difficulty.objects.create(name="Easy")
