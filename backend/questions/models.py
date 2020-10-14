@@ -26,6 +26,17 @@ class Question(models.Model):
     function_name = models.CharField(max_length=50)
     parameters = models.JSONField()
     test_cases = models.JSONField()
+    
+    def test_suite(self):
+        suite = []
+
+        for case in test_cases:
+            curr_input = {}
+            for param_name, param_value in zip(case['input'], parameters):
+                curr_input[param_name] = param_value
+            suite.append(curr_input)
+
+        return suite
 
     def __str__(self):
         return self.name

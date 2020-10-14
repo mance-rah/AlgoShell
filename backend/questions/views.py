@@ -2,13 +2,12 @@ from rest_framework.decorators import parser_classes, api_view
 from rest_framework.parsers import JSONParser
 from django.http import JsonResponse
 from .models import Question
-from .helpers import get_suite
 import json
     
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def run_test(request, function_name):
-    suite = get_suite(function_name)
+    suite = Question.objects.get(function_name=function_name).test_suite
 
     # Get solution as a string from request
     solution = request.data['solution']
@@ -20,13 +19,13 @@ def run_test(request, function_name):
     response_body = {'passed': True, 'results': []}
 
     for case in suite:
-        exec('result = {}("{}")'.format(function_name, case['inputs']['string']))
+        exec('result = {}("{}")'.format(function_name, case['input'][0]))
         if locals()['result'] != case['output']:
             response_body['passed'] = False
         
         response_body['results'].append(
             {
-                'inputs': case['inputs'],
+                'inputs': case['input'],
                 'expected': case['output'],
                 'actual': locals()['result'],
                 'passed': locals()['result'] == case['output']
