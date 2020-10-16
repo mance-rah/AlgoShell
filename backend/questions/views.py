@@ -7,7 +7,7 @@ import json
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def run_test(request, function_name):
-    suite = Question.objects.get(function_name=function_name).tests
+    suite = Question.objects.get(function_name=function_name).test_cases
 
     # Get solution as a string from request
     solution = request.data['solution']
@@ -19,7 +19,7 @@ def run_test(request, function_name):
     response_body = {'passed': True, 'results': []}
 
     for case in suite:
-        exec('result = {}("{}")'.format(function_name, case['input'][0]))
+        exec('result = {}("{}")'.format(function_name, list(case['input'].values())[0]))
         if locals()['result'] != case['output']:
             response_body['passed'] = False
         
@@ -41,13 +41,13 @@ def get_questions(request):
 
     for question in Question.objects.all():
         function_name = convert_title_to_function_name(question.name)
-        test_suite = get_suite(function_name)
+        test_suite = question.test_cases
 
         response_body.append({
             'title': question.name,
             'description': question.description,
-            'function_name': function_name,
-            'function_signature': question.signature,
+            'function_name': question.function_name,
+            'parameters': question.parameters,
             'category': question.category.name,
             'difficulty': question.difficulty.name,
             'tests': test_suite
