@@ -21,6 +21,23 @@ def create_test_questions():
         ]
     )
 
+class CreateSuiteTests(APITestCase):
+
+    def setUp(self):
+        create_test_questions()
+
+    def test_cases_correct_definitions(self):
+        """Ensure tests are formatted correctly when reading."""
+        question = Question.objects.get(name='Is Palindrome')
+        expected = [
+            {'input': {'strings': 'abcdcba'}, 'output': True},
+            {'input': {'strings': 'a'}, 'output': True},
+            {'input': {'strings': 'ab'}, 'output': False}
+        ]
+        actual = question.test_cases
+
+        self.assertEqual(expected, actual)
+
 class IsPalindromeTests(APITestCase):
 
     def setUp(self):

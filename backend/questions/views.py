@@ -7,7 +7,7 @@ import json
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def run_test(request, function_name):
-    suite = Question.objects.get(function_name=function_name).test_suite
+    suite = Question.objects.get(function_name=function_name).tests
 
     # Get solution as a string from request
     solution = request.data['solution']
