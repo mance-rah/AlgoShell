@@ -19,7 +19,9 @@ def run_test(request, function_name):
     response_body = {'passed': True, 'results': []}
 
     for case in suite:
-        exec('result = {}("{}")'.format(function_name, list(case['input'].values())[0]))
+        get_result_code_str = 'result = {}({})'.format(function_name, _param_value_list_to_str(list(case['input'].values())))
+        exec(get_result_code_str)
+
         if locals()['result'] != case['output']:
             response_body['passed'] = False
         
@@ -33,6 +35,19 @@ def run_test(request, function_name):
         )
 
     return JsonResponse(response_body)
+
+def _param_value_list_to_str(param_value_list):
+    """Given a list of parameter values return a string with the values separated with commas and spaces in between them."""
+    param_value_str = ''
+    for value in param_value_list:
+        if type(value) is str:
+            param_value_str += '"{}", '.format(value)
+        else:
+            param_value_str += '{}, '.format(value)
+
+    # Do not include the last comma and space in result
+    return param_value_str[:-2]
+
 
 @api_view(['GET'])
 @parser_classes([JSONParser])

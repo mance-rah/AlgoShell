@@ -60,8 +60,8 @@ class TwoNumberSumTests(APITestCase):
         Ensure correct solution passes test cases.
         """
         solution = "" + \
-        "def two_number_sum(array, targetSum):\n" + \
-        "   comps = {targetSum - value: value for value in array}\n" + \
+        "def two_number_sum(array, target_sum):\n" + \
+        "   comps = {target_sum - value: value for value in array}\n" + \
         "   for value in array:\n" + \
         "       if value in comps and comps[value] != value:\n" + \
         "           return [comps[value], value]\n" + \
