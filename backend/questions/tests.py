@@ -6,7 +6,6 @@ import json
 
 APITestCase.maxDiff = None
 
-
 def create_is_palindrome_question():
 
     Question.objects.create(
@@ -22,9 +21,6 @@ def create_is_palindrome_question():
             {'input': ['ab'], 'output': False}
         ]
     )
-
-
-
 
 class CreateSuiteTests(APITestCase):
 
@@ -54,7 +50,7 @@ class TwoNumberSumTests(APITestCase):
             difficulty=Difficulty.objects.create(name='Mock difficulty'),
             function_name='two_number_sum',
             parameters=['array', 'target_sum'],
-            test_cases: [
+            test_cases= [
                 {'input': [[3, 5, -4, 8, 11, 1, -1, 6], 10], 'output': [-1, 11]}
             ]
         )
