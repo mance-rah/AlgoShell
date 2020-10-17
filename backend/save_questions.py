@@ -24,11 +24,22 @@ question_info_list = [
             {'input': ['a'], 'output': True},
             {'input': ['ab'], 'output': False}
         ]
+    },
+    {
+        'name': 'Two Number Sum',
+        'description': 'Given an array of integers and a target integer, return the two numbers in the list such that they add up to target.',
+        'category': 'Arrays',
+        'difficulty': 'Easy',
+        'function_name': 'two_number_sum',
+        'parameters': ['array', 'target_sum']
+        'test_cases': [
+            {'input': [[3, 5, -4, 8, 11, 1, -1, 6], 10], 'output': [-1, 11]}
+        ]
     }
 ]
 
 # ======================================================
-# Syncs questions config with the database
+# Sync questions config with the database
 # ======================================================
 
 from questions.models import Question, Category, Difficulty

@@ -7,9 +7,9 @@ import json
 APITestCase.maxDiff = None
 
 
-def create_test_questions():
+def create_is_palindrome_question():
 
-    is_palindrome_question = Question.objects.create(
+    Question.objects.create(
         name='Is Palindrome',
         description='Write a function that determines if a string is a palindrome.',
         category=Category.objects.create(name="Strings"),
@@ -23,10 +23,13 @@ def create_test_questions():
         ]
     )
 
+
+
+
 class CreateSuiteTests(APITestCase):
 
     def setUp(self):
-        create_test_questions()
+        create_is_palindrome_question()
 
     def test_cases_correct_definitions(self):
         """Ensure tests are formatted correctly when reading."""
@@ -40,10 +43,62 @@ class CreateSuiteTests(APITestCase):
 
         self.assertEqual(expected, actual)
 
+class TwoNumberSumTests(APITestCase):
+    
+    def setUp(self):
+        # Create two number sum question
+        Question.objects.create(
+            name='Two Number Sum',
+            description='Mock description',
+            category= Category.objects.create(name='Mock category'),
+            difficulty=Difficulty.objects.create(name='Mock difficulty'),
+            function_name='two_number_sum',
+            parameters=['array', 'target_sum'],
+            test_cases: [
+                {'input': [[3, 5, -4, 8, 11, 1, -1, 6], 10], 'output': [-1, 11]}
+            ]
+        )
+
+    def test_correct_solution_passes(self):
+        """
+        Ensure correct solution passes test cases.
+        """
+        solution = "" + \
+        "def two_number_sum(array, targetSum):\n" + \
+        "   comps = {targetSum - value: value for value in array}\n" + \
+        "   for value in array:\n" + \
+        "       if value in comps and comps[value] != value:\n" + \
+        "           return [comps[value], value]\n" + \
+        "   return []"
+
+        request_body = {
+            'solution': solution
+        }
+        url = reverse('run_test', kwargs={'function_name': 'two_number_sum'})
+        expected_response_body = {
+            'passed': True,
+            'results': [
+                {
+                    'inputs': {
+                        'array': [3, 5, -4, 8, 11, 1, -1, 6],
+                        'target_sum': 10
+                    },
+                    'expected': [-1, 11],
+                    'actual': [-1, 11],
+                    'passed': True
+                }
+            ]
+        }
+
+        response = self.client.post(url, request_body, format='json')
+        actual_response_body = json.loads(response.content)
+
+        self.assertEqual(expected_response_body, actual_response_body)
+
 class IsPalindromeTests(APITestCase):
 
     def setUp(self):
-        create_test_questions()
+        create_is_palindrome_question()
 
     def test_correct_solution_passes(self):
         """
@@ -159,7 +214,7 @@ class IsPalindromeTests(APITestCase):
 class GetQuestionsTests(APITestCase):
     
     def setUp(self):
-        create_test_questions()
+        create_is_palindrome_question()
 
     def test_is_palindrome_exists(self):
         """
