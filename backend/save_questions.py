@@ -31,7 +31,7 @@ question_info_list = [
         'category': 'Arrays',
         'difficulty': 'Easy',
         'function_name': 'two_number_sum',
-        'parameters': ['array', 'target_sum']
+        'parameters': ['array', 'target_sum'],
         'test_cases': [
             {'input': [[3, 5, -4, 8, 11, 1, -1, 6], 10], 'output': [-1, 11]}
         ]
