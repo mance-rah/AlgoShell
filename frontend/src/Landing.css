@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@800&display=swap');
+
 .Landing{
-    background-color: black;
+    background-color:#282A36;
     color:white;
     min-height: 100vh;
 }
@@ -19,6 +21,9 @@
 
 .Headline-Title{
     color: #50FA7B;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight:800;
+    font-size: 72px;
 }
 
 .Subheading{
