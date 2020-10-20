@@ -6,7 +6,7 @@ AlgoShell is a coding challenge platform similar to LeetCode except it utilizes 
 
 ### Project Setup
 With docker installed do the following:
-1. Run `./run.sh` to create and run docker containers
+1. Run `./start.sh` to create and run docker containers
 2. Run `./stop.sh` to stop and remove docker containers
 
 ### Admin Interface
@@ -14,10 +14,12 @@ With docker installed do the following:
 2. Username is `admin` and password is `1234`
 
 ### Frontend Interface
-React app is visible at `localhost:3000`
+- React app is visible at `localhost:3000`
+- Can be started independently of entire project with `./frontend.sh`
 
 ### Backend Interface
-Backend URLs are visible at `localhost:8000`
+- Backend URLs are visible at `localhost:8000`
+- Can be started independently of entire project with `./backend.sh`
 
 ### Integration Tests
 Run `./test.sh`

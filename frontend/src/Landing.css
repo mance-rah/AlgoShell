@@ -1,0 +1,32 @@
+.Landing{
+    background-color: black;
+    color:white;
+    min-height: 100vh;
+}
+
+.Banner{
+    background-color: #9580FF;
+    color: #282A36;
+}
+
+.Navbar{
+    background-color: #282A36;
+}
+
+.Headline{
+    background-color: #373A59;
+}
+
+.Headline-Title{
+    color: #50FA7B;
+}
+
+.Subheading{
+    background-color: #282A36;
+}
+
+.Button{
+    background-color: #50FA7B;
+    color: #373941;
+}
+
