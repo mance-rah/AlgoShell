@@ -1,2 +1,3 @@
 def is_palindrome(string):
-    return True
+    # Write your solution here
+    pass
