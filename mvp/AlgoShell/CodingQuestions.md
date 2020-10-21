@@ -1,6 +1,6 @@
 # Coding Questions
 
-### Problem 1: Is Palindrome
+### 1. Is Palindrome
 Write a function that takes in a string and
 returns True if the string is a palindrome
 otherwise False.
