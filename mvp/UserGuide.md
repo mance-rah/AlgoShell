@@ -1,4 +1,6 @@
-# User Guide
+# AlgoShell User Guide
+
+AlgoShell is a coding challenge platform similar to LeetCode except it does not require internet access to validate solutions.
 
 Please follow these steps to setup the coding challenge questions:
 1. Download `AlgoShell`
