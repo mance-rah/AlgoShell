@@ -128,3 +128,32 @@ arr = [1, 5, 4, 3, 2]
 **Please follow these steps:**
 1. Write your solution in `solutions/pancake_sort.py`
 2. Test your solution with `./AlgoShell.sh PancakeSort`
+
+---
+
+### 5. Array of Array Products
+Given an array of integers arr, you’re asked to calculate for each index i the product of all integers except the integer at that index (i.e. except arr[i]). Implement a function arrayOfArrayProducts that takes an array of integers and returns an array of the products.
+
+Solve without using division.
+
+**Sample Input:**
+```python
+input: arr = [8, 10, 2]
+```
+**Sample Output:**
+```python
+output: [20, 16, 80] # by calculating: [102, 82, 8*10]
+```
+
+**Sample Input:**
+```python
+input: arr = [2, 7, 3, 4]
+```
+**Sample Output:**
+```python
+output: [84, 24, 56, 42] # by calculating: [734, 234, 274, 273]
+```
+
+**Please follow these steps:**
+1. Write your solution in `solutions/array_of_array_products.py`
+2. Test your solution with `./AlgoShell.sh ArrayOfArrayProducts`
