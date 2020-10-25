@@ -73,6 +73,71 @@ class IsPalindrome(unittest.TestCase):
         actual = is_palindrome(string)
 
         self.assertEqual(expected, actual)
+        
+class BracketMatch(unittest.TestCase):
+    def test_case_1(self):
+        text = ')'
+
+        expected = 1
+        actual = bracket_match(text)
+
+        self.assertEqual(expected, actual)
+        
+    def test_case_2(self):
+        text = '('
+
+        expected = 1
+        actual = bracket_match(text)
+        
+        self.assertEqual(expected, actual)
+        
+    def test_case_3(self):
+        text = '(())'
+
+        expected = 0
+        actual = bracket_match(text)
+        
+        self.assertEqual(expected, actual)
+        
+    def test_case_4(self):
+        text = '(()'
+
+        expected = 1
+        actual = bracket_match(text)
+        
+        self.assertEqual(expected, actual)
+        
+    def test_case_5(self):
+        text = '())('
+
+        expected = 2
+        actual = bracket_match(text)
+        
+        self.assertEqual(expected, actual)
+        
+    def test_case_6(self):
+        text = '))))'
+
+        expected = 4
+        actual = bracket_match(text)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_7(self):
+        text = ')('
+
+        expected = 2
+        actual = bracket_match(text)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_8(self):
+        text = '()()()()()'
+
+        expected = 0
+        actual = bracket_match(text)
+
+        self.assertEqual(expected, actual)
 
 class SentenceReverse(unittest.TestCase):
     def test_case_1(self):
@@ -84,6 +149,7 @@ class SentenceReverse(unittest.TestCase):
         self.assertEqual(expected, actual)
 
     def test_case_2(self):
+
         input = ["a"," "," ","b"]
 
         expected = ["b"," "," ","a"]
@@ -112,7 +178,7 @@ class SentenceReverse(unittest.TestCase):
 
         expected = ["m","a","y"," ","t","h","e"," ","f","o","r","c","e"," ","b","e"," ","w","i","t","h"," ","y","o","u"]
         actual = sentence_reverse(input)
-
+      
         self.assertEqual(expected, actual)
 
     def test_case_6(self):
