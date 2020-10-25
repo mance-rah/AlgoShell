@@ -21,7 +21,7 @@ True
 1. Write your solution in `solutions/is_palindrome.py`
 2. Test your solution with `./AlgoShell.sh IsPalindrome`
 
-
+---
 
 ### 2. Sentence Reverse
 You are given an array of characters arr that consists of sequences of characters separated by space characters. Each space-delimited sequence of characters defines a word.
@@ -109,3 +109,22 @@ arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
 **Please follow these steps:**
 1. Write your solution in `solutions/sentence_reverse.py`
 2. Test your solution with `./AlgoShell.sh SentenceReverse`
+
+---
+
+### 4. Pancake Sort
+1\) Write a function flip(arr, k) that reverses the order of the first k elements in the array arr.
+
+2\) Write a function pancake_sort(arr) that sorts and returns the input array. You are allowed to use only the function flip you wrote in the first step in order to make changes in the array.
+
+**Sample Input:**
+```python
+arr = [1, 5, 4, 3, 2]
+```
+**Sample Output:**
+```python
+[1, 2, 3, 4, 5]
+```
+**Please follow these steps:**
+1. Write your solution in `solutions/pancake_sort.py`
+2. Test your solution with `./AlgoShell.sh PancakeSort`
