@@ -23,29 +23,6 @@ True
 
 ---
 
-### 2. Sentence Reverse
-You are given an array of characters arr that consists of sequences of characters separated by space characters. Each space-delimited sequence of characters defines a word.
-
-Implement a function reverseWords that reverses the order of the words in the array in the most efficient manner.
-
-**Sample Input:**
-```python
-arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
-           'm', 'a', 'k', 'e', 's', '  ',
-           'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
-```
-**Sample Output:**
-```python
-[ 'p', 'r', 'a', 'c', 't', 'i', 'c', 'e', '  ',
-  'm', 'a', 'k', 'e', 's', '  ',
-  'p', 'e', 'r', 'f', 'e', 'c', 't' ]
-```
-**Please follow these steps:**
-1. Write your solution in `solutions/sentence_reverse.py`
-2. Test your solution with `./AlgoShell.sh SentenceReverse`
-
----
-
 ### 2. Bracket Match
 A string of brackets is considered correctly matched if 
 every opening bracket in the string can be paired up with 
@@ -97,8 +74,8 @@ Implement a function reverseWords that reverses the order of the words in the ar
 **Sample Input:**
 ```python
 arr = [ 'p', 'e', 'r', 'f', 'e', 'c', 't', '  ',
-           'm', 'a', 'k', 'e', 's', '  ',
-           'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
+        'm', 'a', 'k', 'e', 's', '  ',
+        'p', 'r', 'a', 'c', 't', 'i', 'c', 'e' ]
 ```
 **Sample Output:**
 ```python
@@ -142,7 +119,8 @@ input: arr = [8, 10, 2]
 ```
 **Sample Output:**
 ```python
-output: [20, 16, 80] # by calculating: [102, 82, 8*10]
+output: [20, 16, 80]
+# by calculating: [102, 82, 8*10]
 ```
 
 **Sample Input:**
@@ -151,9 +129,37 @@ input: arr = [2, 7, 3, 4]
 ```
 **Sample Output:**
 ```python
-output: [84, 24, 56, 42] # by calculating: [734, 234, 274, 273]
+output: [84, 24, 56, 42]
+# by calculating: [734, 234, 274, 273]
 ```
 
 **Please follow these steps:**
 1. Write your solution in `solutions/array_of_array_products.py`
 2. Test your solution with `./AlgoShell.sh ArrayOfArrayProducts`
+
+---
+
+### 6. Sales Path
+The car manufacturer Honda holds their distribution system in the form of a tree (not necessarily binary). The root is the company itself, and every node in the tree represents a car distributor that receives cars from the parent node and ships them to its children nodes. The leaf nodes are car dealerships that sell cars direct to consumers. In addition, every node holds an integer that is the cost of shipping a car to it.
+
+Take for example the tree below:
+
+![Sales Path Example](./images/sales-path-example.jpg)
+
+A path from Honda’s factory to a car dealership, which is a path from the root to a leaf in the tree, is called a Sales Path. The cost of a Sales Path is the sum of the costs for every node in the path. For example, in the tree above one Sales Path is 0→3→0→10, and its cost is 13 (0+3+0+10).
+
+Honda wishes to find the minimal Sales Path cost in its distribution tree. Given a node rootNode, write a function get_cheapest_cost that calculates the minimal Sales Path cost in the tree.
+
+**Sample Input:**
+```
+Given the rootNode of the tree in diagram above
+```
+**Sample Output:**
+```
+7
+```
+#### * Since it’s the minimal Sales Path cost (there are actually two Sales Paths in the tree whose cost is 7: 0→6→1 and 0→3→2→1→1)
+\
+**Please follow these steps:**
+1. Write your solution in `solutions/sales_path.py`
+2. Test your solution with `./AlgoShell.sh SalesPath`
