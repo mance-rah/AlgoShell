@@ -158,8 +158,28 @@ Given the rootNode of the tree in diagram above
 ```
 7
 ```
-#### * Since it’s the minimal Sales Path cost (there are actually two Sales Paths in the tree whose cost is 7: 0→6→1 and 0→3→2→1→1)
-\
+**Explanation**
+```
+Since it’s the minimal Sales Path cost (there are actually two Sales Paths in the tree whose cost is 7: 0→6→1 and 0→3→2→1→1)
+```
+
 **Please follow these steps:**
 1. Write your solution in `solutions/sales_path.py`
 2. Test your solution with `./AlgoShell.sh SalesPath`
+
+---
+
+### 7. Absolute Value Sort
+Given an array of integers arr, write a function abs_sort(arr), that sorts the array according to the absolute values of the numbers in arr. If two numbers have the same absolute value, sort them according to sign, where the negative numbers come before the positive numbers.
+
+**Sample Input:**
+```python
+arr = [2, -7, -2, -2, 0]
+```
+**Sample Output:**
+```python
+[0, -2, -2, 2, -7]
+```
+**Please follow these steps:**
+1. Write your solution in `solutions/absolute_value_sort.py`
+2. Test your solution with `./AlgoShell.sh AbsoluteValueSort`
