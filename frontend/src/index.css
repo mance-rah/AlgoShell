@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#main h1 {
+  font-size: 6em;
+}
+
+#main p {
+  font-size: 2em;
+  font-weight: 550;
+}
+
+#main img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+#main .btn-lg {
+  margin-top: 20px;
+}
+
+.navbar-brand img {
+  width: 30px;
+  margin-bottom: 9px;
+}
+
+#under-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#under-main p {
+  font-size: 1.5em;
+  font-weight: lighter;
+  padding-bottom: 10px;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer img {
+  width: 16px;
+  margin-bottom: 7px;
+}
+
