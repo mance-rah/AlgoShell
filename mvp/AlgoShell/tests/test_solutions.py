@@ -285,7 +285,189 @@ class ArrayOfArrayProducts(unittest.TestCase):
 
         actual = array_of_array_products(input)
 
-        self.assertEqual(expected, actual)    
+        self.assertEqual(expected, actual)
+
+class SalesPath(unittest.TestCase):
+    class Node:
+        def __init__(self, cost):
+            self.cost = cost
+            self.children = []
+            self.parent = None
+    
+    def test_case_1(self):
+        root = SalesPath.Node(0)    # Parent
+        node_a = SalesPath.Node(5)
+        node_b = SalesPath.Node(3)
+        node_c = SalesPath.Node(6)
+        node_d = SalesPath.Node(4)
+        node_e = SalesPath.Node(2)
+        node_f = SalesPath.Node(0)
+        node_g = SalesPath.Node(1)
+        node_h = SalesPath.Node(5)
+        node_i = SalesPath.Node(1)
+        node_j = SalesPath.Node(10)
+        node_k = SalesPath.Node(1)
+
+        root.children.append(node_a)
+        root.children.append(node_b)
+        root.children.append(node_c)
+
+        node_a.parent = root
+        node_a.children.append(node_d)
+
+        node_b.parent = root
+        node_b.children.append(node_e)
+        node_b.children.append(node_f)
+
+        node_c.parent = root
+        node_c.children.append(node_g)
+        node_c.children.append(node_h)
+
+        node_d.parent = node_a
+
+        node_e.parent = node_b
+        node_e.children.append(node_i)
+
+        node_f.parent = node_b
+        node_f.children.append(node_j)
+
+        node_g.parent = node_c
+
+        node_h.parent = node_c
+
+        node_i.parent = node_e
+        node_i.children.append(node_k)
+
+        node_j.parent = node_f
+
+        node_k.parent = node_i
+
+        expected = 7
+        actual = get_cheapest_cost(root)
+
+        self.assertEqual(expected, actual)
+
+class AbsoluteValueSort(unittest.TestCase):
+    def test_case_1(self):
+        arr = [2,-7,-2,-2,0]
+
+        expected = [0,-2,-2,2,-7]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_2(self):
+        arr = [-2,1]
+
+        expected = [1,-2]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_3(self):
+        arr = [0,1,2]
+
+        expected = [0,1,2]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_4(self):
+        arr = [2,-1,-1,-1]
+
+        expected = [-1,-1,-1,2]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_5(self):
+        arr = [-2,3,5,-1,4]
+
+        expected = [-1,-2,3,4,5]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_6(self):
+        arr = [4,-1,6,-4,2,-1]
+
+        expected = [-1,-1,2,-4,4,6]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_7(self):
+        arr = [6,4,-5,0,-1,7,0]
+
+        expected = [0,0,-1,4,-5,6,7]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_8(self):
+        arr = [-7,-2,-2,6,5,-6,-2,-6]
+
+        expected = [-2,-2,-2,5,-6,-6,6,-7]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+
+    def test_case_9(self):
+        arr = [-4,9,-1,1,-1,2,-8,-6,3]
+
+        expected = [-1,-1,1,2,3,-4,-6,-8,9]
+        actual = abs_sort(arr)
+
+        self.assertEqual(expected, actual)
+
+class NumberOfPaths(unittest.TestCase):
+    def test_case_1(self):
+        n = 1
+
+        expected = 1
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_2(self):
+        n = 2
+
+        expected = 1
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_3(self):
+        n = 3
+
+        expected = 2
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_4(self):
+        n = 4
+
+        expected = 5
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_5(self):
+        n = 6
+
+        expected = 42
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
+    
+    def test_case_6(self):
+        n = 17
+
+        expected = 35357670
+        actual = num_of_paths_to_dest(n)
+
+        self.assertEqual(expected, actual)
 
 if __name__ == '__main__':
     unittest.main()
