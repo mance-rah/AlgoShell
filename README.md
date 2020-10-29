@@ -22,6 +22,25 @@ To stop, run `./stop.sh`
 
 ---
 
+## Start Backend
+1. Run database migrations
+```bash
+docker-compose run web python manage.py migrate
+```
+2. Start the server
+```bash
+docker-compose up --build
+```
+3. Create an administrator account
+```bash
+docker-compose run web python manage.py create superuser
+```
+
+4. Go to `localhost:8000`
+5. Sign in using the username and password you provided
+
+---
+
 Happy coding! 
 
 Feel free to let me know if you have any questions `andrewroblesdev@gmail.com`
