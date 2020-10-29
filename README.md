@@ -23,6 +23,8 @@ To stop, run `./stop.sh`
 ---
 
 ## Start Backend
+*Make sure you have Docker installed*
+
 1. Run database migrations
 ```bash
 docker-compose run web python manage.py migrate
